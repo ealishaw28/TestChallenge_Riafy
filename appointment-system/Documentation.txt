@@ -1,0 +1,76 @@
+Backend - app.py
+    The backend is developed using Flask and SQLAlchemy, which enables interaction with the SQLite database.
+
+    Key Features:
+    Flask Routes:
+
+    /: Serves the main page (index.html).
+
+    /available_slots: Fetches available time slots for a specified date.
+
+    /book: Manages appointment bookings by saving details in the database.
+
+Database Model:
+
+    The Appointment model includes the following columns:
+
+    id: Primary key.
+
+    name: Name of the person booking the appointment.
+
+    phone: Phone number of the person booking.
+
+    date: The date of the appointment.
+
+    time_slot: The chosen time slot for the appointment.
+
+    A unique constraint on date and time_slot ensures no double bookings for the same slot.
+
+Required Python Libraries:
+
+    Flask: The web framework for routing and API development.
+
+    Flask-SQLAlchemy: The ORM for interacting with the SQLite database.
+
+    datetime and timedelta: Used to generate available time slots.
+
+Frontend - index.html
+    The frontend page allows users to:
+
+    Enter personal details (name and phone number).
+
+    Select a date from the calendar.
+
+    Choose an available time slot from a dynamically generated dropdown.
+
+    The frontend is built using basic HTML and includes a script (bookingPlugin.js) to handle dynamic interactions such as:
+
+    Fetching available time slots.
+
+    Displaying success/failure messages after booking.
+
+Frontend JavaScript - bookingPlugin.js
+    This JavaScript file manages the dynamic functionality of the frontend:
+
+    Fetching Available Slots: The fetchAvailableSlots() function calls the /available_slots API endpoint to retrieve available slots for a selected date.
+
+    Slot Update: The updateAvailableSlots() function populates the dropdown with available slots based on the response.
+
+    Form Submission: The handleFormSubmit() function sends user data (name, phone, date, and time slot) to the /book API endpoint to book the appointment.
+
+Database - appointments.db
+    The appointments.db is an SQLite database file that is automatically created when you run the backend app. The database contains a table called appointments, where each appointment booking is stored. The table includes the following columns:
+
+    id: Primary key.
+
+    name: Name of the person booking the appointment.
+
+    phone: Phone number of the person booking the appointment.
+
+    date: The date of the appointment.
+
+    time_slot: The chosen time slot for the appointment.
+
+Running the Project Locally
+Prerequisites:
+    Python 3.11 or later
